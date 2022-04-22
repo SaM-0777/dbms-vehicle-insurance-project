@@ -3,6 +3,7 @@ const path = require('path');
 
 const logger = require('./middleware/logMiddleware.js');
 const appRoutes = require('./routes/appRoutes.js');
+const { error } = require('console');
 
 
 const PORT = process.env.PORT || 5000;
@@ -21,6 +22,8 @@ app.set('view engine', 'ejs');
 // static folders
 // const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
