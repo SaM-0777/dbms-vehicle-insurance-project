@@ -1,7 +1,13 @@
-const query = require('../models/userModel.js');
+// const Query = require('../models/userModel.js');
+
+const { query } = require("express");
 
 const home = (req, res) => {
     res.status(200).render('index')
+};
+
+const getProfile = (req, res) => {
+    res.status(200).json({ profile: req.oidc.user })
 };
 
 const blog = (req, res) => {
@@ -9,7 +15,7 @@ const blog = (req, res) => {
 };
 
 const getCities = (req, res) => {
-    res.status(200).json({ message: 'success' })
+    res.status(200).json(query)
 };
 
 
@@ -17,6 +23,7 @@ const getCities = (req, res) => {
 
 module.exports = {
     home,
+    getProfile,
     blog,
     getCities,
 };

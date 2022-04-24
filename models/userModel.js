@@ -11,7 +11,6 @@ const db = mySql.createConnection({
     database: process.env.MYSQL_DATABASE,
     insecureAuth: true
 });
-
 db.connect((error) => {
     if (error) {
         console.error('error connecting: ' + error.stack);
@@ -20,12 +19,14 @@ db.connect((error) => {
     console.log('connected as id ' + db.threadId);
 })
 
+
 const Query = (db.query('SELECT * FROM CITY', (error, results, fields) => {
     if (error) throw error
-    console.log('The solution is: ', results[0].solution);
-    db.end();
+    console.log('The solution is: ', results.solution);
 }));
 
 
-module.exports = Query;
+module.exports = {
+    Query,
+};
 
